@@ -9,12 +9,8 @@ const btnBusca         = document.querySelector("#btn04")
 
 //Contador
 const contadorPreco = document.querySelector("#contador")
-
-function sumProducts(x){
-    let i = 0
-    sum = i += x
-    return sum
-}
+let sumValor = produtos.reduce((acc,element) => acc + parseInt(element.preco),0)
+contadorPreco.innerText = `R$${sumValor},00`
 
 //Create products
 produtos.forEach(createProducts)
@@ -37,16 +33,20 @@ function createProducts(products){
     ulProdutos.appendChild(liProducts)
 }
 
-produtos.forEach(listCards)
-
 function listCards(products){
     ulProdutos.innerHTML = ""   
-    createProducts(products)
+    products.forEach(element => {
+        createProducts(element)
+    })
+    let sumValor = produtos.reduce((acc,element) => acc + parseInt(element.preco),0)
+    contadorPreco.innerText = `R$${sumValor},00`
 }
 
 //Button All mostrando produtos
 btnAllProducts.addEventListener("click", () => {
     listCards(produtos)
+    let sumValor = produtos.reduce((acc,element) => acc + parseInt(element.preco),0)
+    contadorPreco.innerText = `R$${sumValor},00`
 })
 
 //Button Hortifruti
@@ -57,6 +57,8 @@ btnHortifruti.addEventListener("click", () => {
         return products.secao === "Hortifruti"
     })
     listCards(hortifruti)
+    let sumValor = hortifruti.reduce((acc,element) => acc + parseInt(element.preco),0)
+    contadorPreco.innerText = `R$${sumValor},00`
 })
 
 //Button Panificadora
@@ -66,7 +68,9 @@ btnPanificadora.addEventListener("click", () => {
     const panificadora = produtos.filter(products => {
         return products.secao === "Panificadora"
     })
-    listCards(panificadora) 
+    listCards(panificadora)
+    let sumValor = panificadora.reduce((acc,element) => acc + parseInt(element.preco),0)
+    contadorPreco.innerText = `R$${sumValor},00` 
 })
 
 //Button Laticínios
@@ -74,21 +78,23 @@ btnLaticinios.addEventListener("click", () => {
     ulProdutos.innerHTML = ""
 
     const laticinios = produtos.filter(products => {
-        return produtos.secao === "Laticínio"
+        return products.secao === "Laticínio"
     })
     listCards(laticinios)
+    let sumValor = laticinios.reduce((acc,element) => acc + parseInt(element.preco),0)
+    contadorPreco.innerText = `R$${sumValor},00`
 })
 
 //Search name
-const inputValor  = document.querySelector(".campoBuscaPorNome")
 const btnSearch   = document.querySelector("#btn04")
 
-function buscarNomeProduct(product) {    
-    btnBusca.addEventListener("click", item => {              
-        inputValor.innerText = `${item.nome}`.toLowerCase()
-        console.log(item)
+btnBusca.addEventListener("click", () => {  
+    const inputValor  = document.querySelector(".campoBuscaPorNome").value
+    const productFilter = produtos.filter(products => {
+        return products.nome.toLowerCase() === inputValor.toLowerCase()
     })
-}
+    return listCards(productFilter)   
+})
 
 {/* <li>
     <img src="./src/img/maça.png" alt="Imagem maçã">
