@@ -144,6 +144,7 @@ border-radius: 8px;
 transition: ease-in-out 0.1s;
 width: calc(95% / 4);
 margin-bottom: 30px;
+padding: 10px;
 }
 
 .containerListaProdutos ul li:hover {

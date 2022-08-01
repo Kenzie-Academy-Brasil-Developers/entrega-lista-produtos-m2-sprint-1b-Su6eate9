@@ -24,16 +24,16 @@
     <main>
       <section class="filtersContainer">
         <div id="botoesContainer">
-          <button class="estiloGeralBotoes estiloGeralBotoes--filter">
+          <button id="btn00" class="estiloGeralBotoes estiloGeralBotoes--filter">
             Todos Produtos
           </button>
-          <button class="estiloGeralBotoes estiloGeralBotoes--filter">
+          <button id="btn01" class="estiloGeralBotoes estiloGeralBotoes--filter">
             Hortifruti
           </button>
-          <button class="estiloGeralBotoes estiloGeralBotoes--filter">
+          <button id="btn02" class="estiloGeralBotoes estiloGeralBotoes--filter">
             Panificadora
           </button>
-          <button class="estiloGeralBotoes estiloGeralBotoes--filter">
+          <button id="btn03" class="estiloGeralBotoes estiloGeralBotoes--filter">
             Laticínios
           </button>
         </div>
@@ -44,9 +44,7 @@
             placeholder="Pesquisar por"
             class="campoBuscaPorNome"
           />
-          <button
-            class="estiloGeralBotoes estiloGeralBotoes--botaoBuscaPorNome"
-          >
+          <button id="btn04" class="estiloGeralBotoes estiloGeralBotoes--botaoBuscaPorNome">
             <img src="./src/img/search.png" alt="lupa" />
           </button>
         </div>
@@ -56,25 +54,14 @@
             <img src="./src/img/alert-circle.png" alt="exclamação de alerta">
             <p>Valor total dos produtos da sessão selecionada</p>
         </div>
-        <span>R$ 0.00</span>
+        <span id="contador">R$ 0.00</span>
       </section>
       <!-- CONTAINER DE PRODUTOS -->
       <section class="containerVitrine">
         <div class="containerListaProdutos">
          <ul>
-                    <!-- Utilize esse item html como template para a construção da lista de produtos
-                    
-                    Você pode remover esses comentários depois que fizer a construção pelo DOM -->
-                    
-            
-                    <!-- <li>
-                        <img src="./src/img/maça.png" alt="Imagem maçã">
-                        <h3>Maçã</h3>
-                        <span>Hortifruti</span>
-                        <p>R$ 2.00</p>
-                    </li> -->
-                    
-                </ul>
+
+         </ul>
         </div>
       </section>
     </main>
