@@ -5,7 +5,8 @@ const btnAllProducts   = document.querySelector("#btn00")
 const btnHortifruti    = document.querySelector("#btn01")
 const btnPanificadora  = document.querySelector("#btn02")
 const btnLaticinios    = document.querySelector("#btn03")
-const btnBusca         = document.querySelector("#btn04")
+// const btnBusca         = document.querySelector("#btn04")
+const formSelect       = document.querySelector(".containerBuscaPorNome")
 
 //Contador
 const contadorPreco = document.querySelector("#contador")
@@ -34,15 +35,15 @@ function createProducts(products,i){
     nomeProduct.innerText  = `${products.nome}`
     secaoProduct.innerText = `${products.secao}`
     precoProduct.innerText = `R$${products.preco}`.replace(".",",")
-    buy.innerText = "Comprar"
-    buy.id = "btnBuy"
+    buy.innerText          = "Comprar"
+    buy.id                 = "btnBuy"
 
     divProducts.append(precoProduct, buy)
     liProducts.append(imgProduct, nomeProduct, secaoProduct, componentes, divProducts)    
     ulProdutos.appendChild(liProducts)
 }
 
-//Percorrer componentes
+//Percorrer itens da lista componentes
 function percorreComponentes(array, olComponentes){
     array.componentes.forEach((elemento) => {
         let liComponentes  = document.createElement("li")
@@ -51,13 +52,14 @@ function percorreComponentes(array, olComponentes){
     })
 }
 
+//Function para listar produtos em tela
 function listCards(products){
     ulProdutos.innerHTML = ""   
     products.forEach(element => {
         createProducts(element)
     })
     let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`
+    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 }
 
 //Button All mostrando produtos
@@ -76,7 +78,7 @@ btnHortifruti.addEventListener("click", () => {
     })
     listCards(hortifruti)
     let sumValor = hortifruti.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.replace(".",",")
+    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 })
 
 //Button Panificadora
@@ -88,7 +90,7 @@ btnPanificadora.addEventListener("click", () => {
     })
     listCards(panificadora)
     let sumValor = panificadora.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.replace(".",",") 
+    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",") 
 })
 
 //Button Laticínios
@@ -100,35 +102,27 @@ btnLaticinios.addEventListener("click", () => {
     })
     listCards(laticinios)
     let sumValor = laticinios.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.replace(".",",")
+    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 })
 
-//Search name
-const btnSearch = document.querySelector("#btn04")
+//Search name, section and category
 const keySearch = document.querySelector(".campoBuscaPorNome") 
 
-btnBusca.addEventListener("click", () => {  
-    const inputValor  = document.querySelector(".campoBuscaPorNome").value
+formSelect.addEventListener("submit", (event) => {
+    event.preventDefault() 
+    const inputValor = document.querySelector(".campoBuscaPorNome").value
     const productFilter = produtos.filter(products => {
-        return products.nome.toLowerCase() === inputValor.toLowerCase()
+        return products.nome.toLowerCase().startsWith(inputValor.toLowerCase()) || products.secao.toLowerCase().startsWith(inputValor.toLowerCase()) || products.categoria.toLowerCase().startsWith(inputValor.toLowerCase())
     })
     return listCards(productFilter)   
-})
-
-keySearch.addEventListener("keydown", () => {
-    const inputValor  = document.querySelector(".campoBuscaPorNome").value
-    // if(inputValor.innerText == ""){
-    //     listCards
-    // }
-    const productFilter = produtos.filter(products => {
-        return products.nome.toLowerCase() === inputValor.toLowerCase()
-    })
-    return listCards(productFilter)
-})
+})  
 
 /* <li>
     <img src="./src/img/maça.png" alt="Imagem maçã">
     <h3>Maçã</h3>
     <span>Hortifruti</span>
-    <p>R$ 2.00</p>
+    <div>
+        <p>R$ 2.00</p>
+        <button>Comprar</button>
+    </div>
 </li> */
