@@ -75,7 +75,8 @@ const produtos = [
         componentes: [
             'Carboidratos',
             'Proteínas',
-            'Gorduras totais'
+            'Gorduras totais',
+            'Vitaminas'
         ]
     },
     {
@@ -127,3 +128,5 @@ const produtos = [
         ]
     }
 ]
+
+const carrinhoProducts =[]

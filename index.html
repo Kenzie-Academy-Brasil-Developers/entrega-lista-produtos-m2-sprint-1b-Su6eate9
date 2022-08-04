@@ -54,26 +54,48 @@
             <img src="./src/img/alert-circle.png" alt="exclamação de alerta">
             <p>Valor total dos produtos da sessão selecionada</p>
         </div>
-        <span id="contador">R$ 0.00</span>
+        <span id="contador"></span>
       </section>
       <!-- CONTAINER DE PRODUTOS -->
       <section class="containerVitrine">
         <div class="containerListaProdutos">
-         <ul>
-          <!-- <li>
-            <img src="./src/img/maça.png" alt="Imagem maçã">
-            <h3>Maçã</h3>
-            <span>Hortifruti</span>
-            <div>
-              <p>R$ 2.00</p>
-              <button>Comprar</button>
-            </div>
-        </li> -->
-         </ul>
+          <ul>
+            <!-- <li>
+              <img src="./src/img/maça.png" alt="Imagem maçã">
+              <h3>Maçã</h3>
+              <span>Hortifruti</span>
+              <div>
+                <p>R$ 2.00</p>
+                <button>Comprar</button>
+              </div>
+          </li> -->
+          </ul>
+          <section class="container__carrinho">
+                <div class="container__carrinho-title">
+                  <img src="./src/img/carrinho.png" alt="carrinho">
+                  <h2>Carrinho</h2>
+                </div>
+                <div class="container__carrinho-compras">
+  
+                    <ul></ul>
+  
+                </div>
+                <div class="container__info-carrinho">
+                    <div class="quantidade-carrinho">
+                        <p class="p-final">Quantidade:</p>
+                        <span class="span-final">0</span>
+                    </div>
+                    <div class="total-carrinho">
+                        <p class="p-final">Total:</p>
+                        <span class="span-final">R$0,00</span>
+                    </div>
+                </div>
+          </section>
         </div>
       </section>
     </main>
     <script src="./src/js/dataProdutos.js"></script>
     <script src="./src/js/script.js"></script>
+    <script src="./src/js/carrinho.js"></script>
   </body>
 </html>

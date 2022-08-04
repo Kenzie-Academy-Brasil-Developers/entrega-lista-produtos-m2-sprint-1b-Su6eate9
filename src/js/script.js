@@ -16,7 +16,7 @@ contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 //Create products
 produtos.forEach(createProducts)
 
-function createProducts(products,i){
+function createProducts(products){
     const liProducts  = document.createElement("li")
     const componentes = document.createElement("ol")
     const divProducts = document.createElement("div")
@@ -126,3 +126,27 @@ formSelect.addEventListener("submit", (event) => {
         <button>Comprar</button>
     </div>
 </li> */
+
+//Projeção carrinho
+/* 
+<section class="info">
+    <article class="info-car">
+            <h2>Carrinho de Compras</h2>
+            <div class="carrinho-compras">
+
+                <ul></ul>
+
+            </div>
+            <div class="info-final">
+            <div class="quantidade">
+                <p class="p-final">Quantidade:</p>
+                <span class="span-final">0</span>
+            </div>
+            <div class="total">
+                <p class="p-final">Total:</p>
+                <span class="span-final">R$0,00</span>
+            </div>
+        </div>
+    </article>
+</section>
+*/
