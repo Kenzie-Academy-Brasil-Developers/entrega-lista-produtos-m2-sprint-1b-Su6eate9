@@ -129,4 +129,4 @@ const produtos = [
     }
 ]
 
-const carrinhoProducts =[]
+let carrinhoProducts = []

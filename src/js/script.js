@@ -5,8 +5,8 @@ const btnAllProducts   = document.querySelector("#btn00")
 const btnHortifruti    = document.querySelector("#btn01")
 const btnPanificadora  = document.querySelector("#btn02")
 const btnLaticinios    = document.querySelector("#btn03")
-// const btnBusca         = document.querySelector("#btn04")
 const formSelect       = document.querySelector(".containerBuscaPorNome")
+const btnBuy           = document.querySelectorAll(".btnBuy")
 
 //Contador
 const contadorPreco = document.querySelector("#contador")
@@ -36,7 +36,7 @@ function createProducts(products){
     secaoProduct.innerText = `${products.secao}`
     precoProduct.innerText = `R$${products.preco}`.replace(".",",")
     buy.innerText          = "Comprar"
-    buy.id                 = "btnBuy"
+    buy.classList.add("btnBuy")
 
     divProducts.append(precoProduct, buy)
     liProducts.append(imgProduct, nomeProduct, secaoProduct, componentes, divProducts)    
@@ -115,7 +115,17 @@ formSelect.addEventListener("submit", (event) => {
         return products.nome.toLowerCase().startsWith(inputValor.toLowerCase()) || products.secao.toLowerCase().startsWith(inputValor.toLowerCase()) || products.categoria.toLowerCase().startsWith(inputValor.toLowerCase())
     })
     return listCards(productFilter)   
-})  
+})
+
+//Carrinho
+console.log(btnBuy)
+btnBuy.addEventListener("click", listCarrinho)
+
+function listCarrinho(){
+    produtos.forEach(elemento => {
+        carrinhoProducts.push(elemento)
+    })
+}
 
 /* <li>
     <img src="./src/img/maça.png" alt="Imagem maçã">
