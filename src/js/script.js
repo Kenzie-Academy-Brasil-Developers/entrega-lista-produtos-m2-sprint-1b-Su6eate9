@@ -15,37 +15,35 @@ const contadorPreco = document.querySelector("#contador")
 
 //Create products
 // produtos.forEach(createProducts)
+produtos.forEach(createProducts)
 function createProducts(products){
-    for(let i = 0; i < products.length; i++){
-        const liProducts  = document.createElement("li")
-        const componentes = document.createElement("ol")
-        const divProducts = document.createElement("div")
+    const liProducts  = document.createElement("li")
+    const componentes = document.createElement("ol")
+    const divProducts = document.createElement("div")
 
-        let imgProduct     = document.createElement("img")
-        let nomeProduct    = document.createElement("h3")
-        let secaoProduct   = document.createElement("span")
-        let precoProduct   = document.createElement("p")
-        let buy            = document.createElement("button")
+    let imgProduct     = document.createElement("img")
+    let nomeProduct    = document.createElement("h3")
+    let secaoProduct   = document.createElement("span")
+    let precoProduct   = document.createElement("p")
+    let buy            = document.createElement("button")
 
-        //Loop in components
-        percorreComponentes(products[i], componentes)
+    //Loop in components
+    percorreComponentes(products, componentes)
 
-        addProduct(products[i],buy)
+    addProduct(products,buy)
 
-        imgProduct.src         = products[i].img 
-        imgProduct.alt         = products[i].nome
-        nomeProduct.innerText  = `${products[i].nome}`
-        secaoProduct.innerText = `${products[i].secao}`
-        precoProduct.innerText = `R$${products[i].preco}`.replace(".",",")
-        buy.innerText          = "Comprar"
-        buy.classList.add("btnBuy")
+    imgProduct.src         = products.img 
+    imgProduct.alt         = products.nome
+    nomeProduct.innerText  = `${products.nome}`
+    secaoProduct.innerText = `${products.secao}`
+    precoProduct.innerText = `R$${products.preco}`.replace(".",",")
+    buy.innerText          = "Comprar"
+    buy.classList.add("btnBuy")
 
-        divProducts.append(precoProduct, buy)
-        liProducts.append(imgProduct, nomeProduct, secaoProduct, componentes, divProducts)    
-        ulProdutos.appendChild(liProducts)
-    }
+    divProducts.append(precoProduct, buy)
+    liProducts.append(imgProduct, nomeProduct, secaoProduct, componentes, divProducts)    
+    ulProdutos.appendChild(liProducts)
 }
-createProducts(produtos)
 
 //Percorrer itens da lista componentes
 function percorreComponentes(array, olComponentes){
@@ -150,7 +148,8 @@ function listProductCart(cart){
         name.innerText    = `${element.nome}`
         section.innerText = `${element.secao}`
         price.innerText   = `R$${element.preco}`.slice(0,7).replace(".",",")
-        imgBtn.src           = "./src/img/trash.png"
+        btn.classList.add("btnRemove")
+        imgBtn.src        = "./src/img/trash.png"
 
         ulCart.appendChild(liCart)
         liCart.append(img,divContent,divBtn)
@@ -167,8 +166,10 @@ function addProduct(product,btn){
     })   
 }
 
-function removeCart(){
-    //remove produto do carrinho
+function removeCart(product,btn){
+    btn.addEventListener("click", () => {
+
+    })
 }
 
 function sumCart(){

@@ -371,6 +371,6 @@ main{
         padding-right: 15px;
     }
     .container__carrinho{
-        margin: 0 auto  
+        margin: 0;  
     }
 }
