@@ -10,8 +10,8 @@ const btnBuy           = document.querySelectorAll(".btnBuy")
 
 //Contador
 const contadorPreco = document.querySelector("#contador")
-let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
-contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+// let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
+// contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 
 //Create products
 produtos.forEach(createProducts)
@@ -27,7 +27,7 @@ function createProducts(products){
     let precoProduct   = document.createElement("p")
     let buy            = document.createElement("button")
 
-    //Loop in componentes
+    //Loop in components
     percorreComponentes(products, componentes)
 
     imgProduct.src         = products.img 
@@ -54,19 +54,20 @@ function percorreComponentes(array, olComponentes){
 
 //Function para listar produtos em tela
 function listCards(products){
-    ulProdutos.innerHTML = ""   
+    ulProdutos.innerHTML = "" 
+      
     products.forEach(element => {
         createProducts(element)
     })
-    let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+    // let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
+    // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 }
 
 //Button All mostrando produtos
 btnAllProducts.addEventListener("click", () => {
     listCards(produtos)
-    let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+    // let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
+    // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 })
 
 //Button Hortifruti
@@ -77,8 +78,8 @@ btnHortifruti.addEventListener("click", () => {
         return products.secao === "Hortifruti"
     })
     listCards(hortifruti)
-    let sumValor = hortifruti.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+    // let sumValor = hortifruti.reduce((acc,element) => acc + element.preco,0)
+    // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 })
 
 //Button Panificadora
@@ -89,8 +90,8 @@ btnPanificadora.addEventListener("click", () => {
         return products.secao === "Panificadora"
     })
     listCards(panificadora)
-    let sumValor = panificadora.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",") 
+    // let sumValor = panificadora.reduce((acc,element) => acc + element.preco,0)
+    // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",") 
 })
 
 //Button Laticínios
@@ -101,8 +102,8 @@ btnLaticinios.addEventListener("click", () => {
         return products.secao === "Laticínios"
     })
     listCards(laticinios)
-    let sumValor = laticinios.reduce((acc,element) => acc + element.preco,0)
-    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+    // let sumValor = laticinios.reduce((acc,element) => acc + element.preco,0)
+    // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 })
 
 //Search name, section and category
@@ -118,14 +119,58 @@ formSelect.addEventListener("submit", (event) => {
 })
 
 //Carrinho
-console.log(btnBuy)
-btnBuy.addEventListener("click", listCarrinho)
+function listProductCart(){
+    //modelo do produto no carrinho
+    const containerCart = document.querySelector(".container__carrinho-compras")
+    const ulCart = document.createElement("ul")
+    const liCart =  document.createElement("li")
 
-function listCarrinho(){
-    produtos.forEach(elemento => {
-        carrinhoProducts.push(elemento)
+    containerCart.appendChild(ulCart)
+    ulCart.appendChild(liCart)
+
+    produtos.forEach(element => {
+        const img     = document.createElement("img")
+        const name    = document.createElement("h3")
+        const section = document.createElement("p")
+        const price   = document.createElement("p")
+        const btn     = document.createElement("button")
+
+        img.src           = `${element.img}`
+        img.alt           = `${element.nome}`
+        name.innerText    = `${element.nome}`
+        section.innerText = `${element.secao}`
+        price.innerText   = `R$${element.preco}`.slice(0,7).replace(".",",")
+        btn.innerText     = "Remover"
+
+        liCart.appendChild(img,name,section,price,btn)
     })
 }
+
+function listCart(products){
+    //lista produtos do carrinho
+    cartProducts.innerHTML = ""
+    products.forEach(element => {
+        listProductCart(products)
+    })
+    let sumValor = laticinios.reduce((acc,element) => acc + element.preco,0)
+    contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
+}
+
+function addProduct(){
+    btnBuy.addEventListener("click", element => {
+        // if(listCards.id === )
+    })
+}
+
+function removeCart(){
+    //remove produto do carrinho
+}
+
+function sumCart(){
+    //soma do carrinho
+}
+
+// itensCart(produtos)
 
 /* <li>
     <img src="./src/img/maça.png" alt="Imagem maçã">
