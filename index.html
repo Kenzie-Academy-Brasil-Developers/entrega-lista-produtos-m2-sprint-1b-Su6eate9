@@ -86,3 +86,92 @@
     <script src="./src/js/script.js"></script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/newStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fontawesome.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Mercado da Esquina</title>
+  </head>
+  <body>
+    <!-- CABEÇALHO -->
+    <header>
+      <h1>Mercado da Esquina</h1>
+    </header>
+    <!-- PARTE PRINCIPAL -->
+    <main>
+      <section class="filtersContainer">
+        <div id="botoesContainer">
+          <button id="btn00" class="estiloGeralBotoes estiloGeralBotoes--filter">
+            Todos Produtos
+          </button>
+          <button id="btn01" class="estiloGeralBotoes estiloGeralBotoes--filter">
+            Hortifruti
+          </button>
+          <button id="btn02" class="estiloGeralBotoes estiloGeralBotoes--filter">
+            Panificadora
+          </button>
+          <button id="btn03" class="estiloGeralBotoes estiloGeralBotoes--filter">
+            Laticínios
+          </button>
+        </div>
+
+        <form class="containerBuscaPorNome">
+          <input
+            type="text"
+            placeholder="Pesquisar por"
+            class="campoBuscaPorNome"
+          />
+          <button id="btn04" class="estiloGeralBotoes estiloGeralBotoes--botaoBuscaPorNome">
+            <img src="./src/img/search.png" alt="lupa" />
+          </button>
+        </form>
+      </section>
+      <section class="priceContainer">
+        <!-- <div>
+            <img src="./src/img/alert-circle.png" alt="exclamação de alerta">
+            <p>Valor total dos produtos da sessão selecionada</p>
+        </div> -->
+        <span id="contador"></span>
+      </section>
+      <!-- CONTAINER DE PRODUTOS -->
+      <section class="containerVitrine">
+        <div class="containerListaProdutos">
+          <ul></ul>
+          <section class="container__carrinho">
+                <div class="container__carrinho-title">
+                  <img src="./src/img/carrinho.png" alt="carrinho">
+                  <h2>Carrinho</h2>
+                </div>
+                <div class="container__carrinho-compras"> 
+                    <!-- <ul></ul> -->
+                </div>
+                <div class="container__info-carrinho">
+                    <div class="quantidade-carrinho">
+                        <p class="p-final">Quantidade:</p>
+                        <span class="span-final">0</span>
+                    </div>
+                    <div class="total-carrinho">
+                        <p class="p-final">Total:</p>
+                        <span class="span-final">R$0,00</span>
+                    </div>
+                </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="./src/js/dataProdutos.js"></script>
+    <script src="./src/js/script.js"></script>
+  </body>
+</html>
