@@ -226,7 +226,7 @@ main{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    height: 65px;
+    height: 80px;
     max-width: 100%;
     padding: 5px;
     border-radius: 5px;
@@ -373,7 +373,24 @@ main{
         overflow-x: hidden;
         padding-right: 15px;
     }
+    .containerListaProdutos ul li ol {
+        display: flex;
+        flex-direction: column;
+        list-style: decimal;
+        color: var(--gray-medium);
+        font-size: 12px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+    .containerListaProdutos ul li {
+        border-radius: 8px;
+        transition: ease-in-out 0.1s;
+        margin-bottom: 5px;
+    }
     .container__carrinho{
         margin: 0;  
+    }
+    .container__carrinho ul li{
+        height: 90px;
     }
 }

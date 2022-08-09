@@ -112,7 +112,7 @@ formSelect.addEventListener("submit", (event) => {
     event.preventDefault() 
     const inputValor = document.querySelector(".campoBuscaPorNome").value
     const productFilter = produtos.filter(products => {
-        return products.nome.toLowerCase().startsWith(inputValor.toLowerCase()) || products.secao.toLowerCase().startsWith(inputValor.toLowerCase()) || products.categoria.toLowerCase().startsWith(inputValor.toLowerCase())
+        return products.nome.toLowerCase().startsWith(inputValor.toLowerCase().trim()) || products.secao.toLowerCase().startsWith(inputValor.toLowerCase().trim()) || products.categoria.toLowerCase().startsWith(inputValor.toLowerCase().trim())
     })
     return listCards(productFilter)   
 })
