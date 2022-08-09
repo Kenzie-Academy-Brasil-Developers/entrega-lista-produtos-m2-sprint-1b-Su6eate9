@@ -10,11 +10,8 @@ const formSelect       = document.querySelector(".containerBuscaPorNome")
 
 //Contador
 const contadorPreco = document.querySelector("#contador")
-// let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
-// contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 
 //Create products
-// produtos.forEach(createProducts)
 produtos.forEach(createProducts)
 function createProducts(products){
     const liProducts  = document.createElement("li")
@@ -29,7 +26,7 @@ function createProducts(products){
 
     //Loop in components
     percorreComponentes(products, componentes)
-
+    //Add cart
     addProduct(products,buy)
 
     imgProduct.src         = products.img 
@@ -60,7 +57,6 @@ function listCards(products){
       
     products.forEach(element => {
         createProducts(element)
-        addProduct(element)
     })
     // let sumValor = produtos.reduce((acc,element) => acc + element.preco,0)
     // contadorPreco.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
@@ -125,13 +121,19 @@ formSelect.addEventListener("submit", (event) => {
 function listProductCart(cart){
     //modelo do produto no carrinho
     const containerCart = document.querySelector(".container__carrinho-compras")
+    const countQuantidade = document.querySelector(".contaQuantidade")
+    countQuantidade.innerText = cart.length
+
+    const countPrice = document.querySelector(".contaPrice")
+    let sumValor = cart.reduce((acc,element) => acc + element.preco,0)
+    countPrice.innerText = `R$${sumValor}`.slice(0,7).replace(".",",")
 
     ulCart.innerHTML = ""
 
     containerCart.appendChild(ulCart)
     
-    cart.forEach(element => {
-        const liCart     =  document.createElement("li")
+    cart.forEach((element,i) => {
+        const liCart     = document.createElement("li")
         const img        = document.createElement("img")
         const divContent = document.createElement("div")
         const divBtn     = document.createElement("div")
@@ -151,6 +153,11 @@ function listProductCart(cart){
         btn.classList.add("btnRemove")
         imgBtn.src        = "./src/img/trash.png"
 
+        //button para delete
+        btn.addEventListener("click", () => {
+                removeCart(i)
+        })
+
         ulCart.appendChild(liCart)
         liCart.append(img,divContent,divBtn)
         divContent.append(name,section,price)
@@ -163,18 +170,21 @@ function addProduct(product,btn){
     btn.addEventListener("click", () => {
         cartProducts.push(product)
         listProductCart(cartProducts)
-    })   
-}
-
-function removeCart(product,btn){
-    btn.addEventListener("click", () => {
-
     })
 }
 
-function sumCart(){
-    //soma do carrinho
+function removeCart(i){
+    cartProducts.splice(i,1)
+    listProductCart(cartProducts)
 }
+
+// cartProducts.forEach( element => {
+//     if(element.nome === 0){
+//         cartProducts.push(element)
+//     } else if(element.nome >= 1){
+//         element.nome = element.nome + 1
+//     }
+// })
 /* <li>
     <img src="./src/img/maça.png" alt="Imagem maçã">
     <h3>Maçã</h3>

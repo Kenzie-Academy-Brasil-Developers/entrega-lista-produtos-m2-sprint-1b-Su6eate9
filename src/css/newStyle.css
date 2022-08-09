@@ -319,7 +319,7 @@ main{
 }
 @media screen and (min-width: 950px) {
     main{
-        padding: 0 70px;
+        padding: 0 100px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -333,6 +333,9 @@ main{
     }
     .estiloGeralBotoes {
         cursor: pointer;
+    }
+    .estiloGeralBotoes--botaoBuscaPorNome {
+        margin-right: 0;
     }
     #botoesContainer {
         display: flex;
@@ -348,10 +351,10 @@ main{
         margin-bottom: 1rem;
     }
     .containerBuscaPorNome {
-        display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        max-width: 100%;
+        width: 340px;
+        margin-right: 0;
     }
     .containerVitrine {
         display: flex;
@@ -363,7 +366,7 @@ main{
         width: 100%;
         display: flex;
         flex-direction: row;
-        margin-right: 20px;
+        /* margin-right: 20px; */
     }
     .containerListaProdutos ul {
         flex-wrap: wrap;
